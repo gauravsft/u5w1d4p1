@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THROW DICE </title>
+    <style>
+        #container {
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            width: 60%;
+            margin: auto;
+            border: 1px solid pink;
+            gap: 20px;
+            padding: 15px;
+        }
+
+        #container>div {
+            height: 100px;
+           
+            background-color: black;
+            color: white;
+        }
+
+        #container>div>p {
+            font-size: 25px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="winner">winner</div>
+        <div id="member-1">Member 1</div>
+        <div id="member-2">Member 2</div>
+        <div id="member-3">Member 3</div>
+        <button id="roll">ROLL THE DICE</button>
+    </div>
+
+</body>
+<script>
+
+    // implemented logic here
+    function generateNumber() {
+        return Math.floor(Math.random() * (6 ) + 1);
+    }
+
+    document.getElementById('roll').addEventListener('click', function () {
+
+        var winner0=document.getElementById('winner');
+        winner0.innerHTML="";
+        var member_1=document.getElementById('member-1');
+        member_1.innerHTML = "";
+        var member_2 =document.getElementById('member-2');
+        member_2.innerHTML = "";
+        var member_3 =document.getElementById('member-3');
+        member_3.innerHTML = "";
+        
+        var a = generateNumber();
+        var b = generateNumber();
+        var c = generateNumber();
+        console.log(a,b,c)
+        var winner = document.createElement('p');
+        var member1 = document.createElement('p');
+        var member2 = document.createElement('p');
+        var member3 = document.createElement('p');
+        if (a == b && b == c && a == c) {
+            winner.innerText = "Draw";
+
+            member1.innerText = a;
+            member_1.style.backgroundColor="blue";
+
+            member2.innerText = a;
+            member_2.style.backgroundColor="blue";
+
+            member3.innerText = a;
+            member_3.style.backgroundColor="blue";
+        } else if (a > b && a > c) {
+            if (b > c) {
+                winner.innerText = "Winner Member 1";
+
+                
+
+                member1.innerText = a;
+                member_1.style.backgroundColor="green";
+
+                member2.innerText = b;
+                member_2.style.backgroundColor="yellow";
+
+                member3.innerText = c;
+                member_3.style.backgroundColor="red";
+
+            } else {
+                winner.innerText = "Winner Member 1";
+
+                member1.innerText = a;
+                member_1.style.backgroundColor="green";
+
+                member2.innerText = b;
+                member_2.style.backgroundColor="red";
+
+                member3.innerText = c;
+                member_3.style.backgroundColor="yellow";
+
+            }
+        } else if (b > a && b > c) {
+            if (a > c) {
+                winner.innerText = "Winner Member 2";
+
+                member1.innerText = a;
+                member_1.style.backgroundColor="yellow";
+
+                member2.innerText = b;
+                member_2.style.backgroundColor="green";
+
+                member3.innerText = c;
+                member_3.style.backgroundColor="red";
+
+            } else {
+                winner.innerText = "Winner Member 2";
+
+                member1.innerText = a;
+                member_1.style.backgroundColor="red";
+
+                member2.innerText = b;
+                member_2.style.backgroundColor="green";
+
+                member3.innerText = c;
+                member_3.style.backgroundColor="yellow";
+
+            }
+        } else if (c > a && c > b) {
+            if (a > b) {
+                winner.innerText = "Winner Member 3";
+
+                member1.innerText = a;
+                member_1.style.backgroundColor="yellow";
+
+                member2.innerText = b;
+                member_2.style.backgroundColor="red";
+
+                member3.innerText = c;
+                member_3.style.backgroundColor="green";
+
+            } else {
+                winner.innerText = "Winner Member 3";
+
+                member1.innerText = a;
+                member_1.style.backgroundColor="red";
+
+                member2.innerText = b;
+                member_2.style.backgroundColor="yellow";
+
+                member3.innerText = c;
+                member_3.style.backgroundColor="green";
+
+            }
+        }
+
+
+
+        document.getElementById('winner').append(winner);
+        document.getElementById('member-1').append(member1);
+        document.getElementById('member-2').append(member2);
+        document.getElementById('member-3').append(member3);
+
+
+    });
+
+</script>
+
+</html>
